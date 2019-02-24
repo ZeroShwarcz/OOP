@@ -1,5 +1,4 @@
 #include<iostream>
-#include<cmath>
 
 double my_sqrt(double a)
 {
