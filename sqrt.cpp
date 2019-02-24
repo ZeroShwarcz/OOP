@@ -13,9 +13,15 @@ double my_sqrt(double a)
 
 int main()
 {
-        double sqrt=0;
+        int sqrt=0.0;
         std::cout<<"Введите число, корень которого хотите вычислить: ";
-        std::cin>>sqrt;
+        while (!(std::cin>>sqrt) || std::cin.get()!='\n')
+        {
+                std::cout << "Неверное значение" << std::endl;
+                std::cin.clear();     //сбрасывает все потоки бита
+                std::cin.sync();      //очищает  поток ввода
+                std::cout << "Повторите ввод: ";
+        }
         std::cout<<"Корень = "<< my_sqrt(sqrt)<<std::endl;
         return 0;
 }
