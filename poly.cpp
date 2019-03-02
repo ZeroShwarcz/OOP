@@ -23,7 +23,8 @@ int main(int argc, char* argv[])
 if(argv[1]==s)       //первый флаг
     for (int i(2);i<argc;i++)       //значения после флага
         vec.push_back(atoi(argv[i]));   //пореобразование строки в число
-    //for (int i(0);i<vec.size();i++)  //вывод вектора
+    for (int i(0);i<vec.size();i++)  //вывод вектора
+            cout << vec[i]<< endl<<endl;
         cout<<poly(vec)<<endl;
 
     return 0;
