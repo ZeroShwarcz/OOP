@@ -1,27 +1,43 @@
 #include<iostream>
+#include <limits>
+#include <iomanip>
 
-double my_sqrt(double a)
+using namespace std;
+
+long double buff = 0.0;
+
+long double my_sqrt(long double a)
 {
-	      if(a<0) a*=-1;
-        if(a==0)
+        if(a==0 || a==1)
                 return a;
-        double x = 1.0;
-        for(int i(0); i<10; ++i)
-                x=0.5*(x+a/x);
-        return x;
+        long double  x = 20.0;
+        for(int i = 0; i<100000; ++i)
+{
+            x=0.5*(x+a/x);
+            if(x == buff)
+                return x;
+            buff = x;
+
+            cout << x << "\n********************************\n" << buff << endl;
+}
+        return 0;
 }
 
 int main()
 {
-        int sqrt=0.0;
-        std::cout<<"Введите число, корень которого хотите вычислить: ";
-        while (!(std::cin>>sqrt) || std::cin.get()!='\n')
+        long double sqrt;
+        cout<<"Введите число, корень которого хотите вычислить: ";
+        while (!(cin>>sqrt) || cin.get()!='\n')
         {
-                std::cout << "Неверное значение" << std::endl;
-                std::cin.clear();     //сбрасывает все потоки бита
-                std::cin.sync();      //очищает  поток ввода
-                std::cout << "Повторите ввод: ";
+               cin.clear();
+               cin.ignore(numeric_limits<streamsize>::max(), '\n');
+               cout<<"что-то пошло не так!!! \nповторите ввод: ";
         }
-        std::cout<<"Корень = "<< my_sqrt(sqrt)<<std::endl;
+        if(sqrt > 0)
+            cout<<"Корень = "<< my_sqrt(sqrt)<<endl;
+        else cout << "Нет корней из отрицательного числа" << endl;
+
+
         return 0;
 }
+
